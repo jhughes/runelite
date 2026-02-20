@@ -104,6 +104,7 @@ public class AnimatedModelCacheReproPlugin extends Plugin
 				itemComp.setColorToReplace(baseColors);
 				itemComp.setColorToReplaceWith(replaceColors);
 			}
+			log.info("recolorGear " + comp.getColorTextureOverrides());
 		});
 	}
 
@@ -161,6 +162,11 @@ public class AnimatedModelCacheReproPlugin extends Plugin
 
 			localPlayer.setAnimation(AnimationID.HUMAN_MINING_BRONZE_PICKAXE);
 			localPlayer.setAnimationFrame(0);
+			PlayerComposition comp = localPlayer.getPlayerComposition();
+			if (comp == null) {
+				return;
+			}
+			log.info("playMiningAnimation " + comp.getColorTextureOverrides());
 		});
 	}
 
@@ -176,6 +182,11 @@ public class AnimatedModelCacheReproPlugin extends Plugin
 
 			localPlayer.setAnimation(localPlayer.getIdlePoseAnimation());
 			localPlayer.setAnimationFrame(0);
+			PlayerComposition comp = localPlayer.getPlayerComposition();
+			if (comp == null) {
+				return;
+			}
+			log.info("cancelAnimation " + comp.getColorTextureOverrides());
 		});
 	}
 }
