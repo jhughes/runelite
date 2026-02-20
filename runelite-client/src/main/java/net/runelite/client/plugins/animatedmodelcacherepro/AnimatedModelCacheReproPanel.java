@@ -32,9 +32,24 @@ class AnimatedModelCacheReproPanel extends PluginPanel
 		JButton recolorBtn = new JButton("Recolor Gear to black");
 		recolorBtn.addActionListener(e -> plugin.recolorGear((short) 0));
 		container.add(recolorBtn);
-		container.add(new JLabel("<html>If you don't cancel the animation this won't be visible until you cancel it (due to the cache bug).</html>"));
+		container.add(new JLabel("<html>After updating the items, nothing happens yet because the caches are not reset.</html>"));
 
 		container.add(new JLabel("Step 4"));
+		JButton resetModelCacheButton = new JButton("Reset model cache");
+		resetModelCacheButton.addActionListener(e -> plugin.resetModelCache());
+		container.add(resetModelCacheButton);
+		JButton resetSpriteCacheButton = new JButton("Reset sprite cache");
+		resetSpriteCacheButton.addActionListener(e -> plugin.resetSpriteCache());
+		container.add(resetSpriteCacheButton);
+		container.add(new JLabel("<html>After resetting the cache, the inventory reflects the gear color changes.</html>"));
+
+		container.add(new JLabel("Step 5"));
+		JButton setHashButton = new JButton("Set Hash");
+		setHashButton.addActionListener(e -> plugin.setHash());
+		container.add(setHashButton);
+		container.add(new JLabel("<html>After setHash, the player model reflects the gear color changes.</html>"));
+
+		container.add(new JLabel("Step 6"));
 		JButton animBtn2 = new JButton("Play Animation again");
 		animBtn2.addActionListener(e -> plugin.playMiningAnimation());
 		container.add(animBtn2);

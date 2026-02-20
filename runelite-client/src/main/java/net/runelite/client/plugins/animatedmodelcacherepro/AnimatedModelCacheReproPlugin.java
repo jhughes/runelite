@@ -104,7 +104,35 @@ public class AnimatedModelCacheReproPlugin extends Plugin
 				itemComp.setColorToReplace(baseColors);
 				itemComp.setColorToReplaceWith(replaceColors);
 			}
+		});
+	}
 
+	void resetModelCache() {
+		clientThread.invoke(() ->
+		{
+			client.getItemModelCache().reset();
+		});
+	}
+
+	void resetSpriteCache() {
+		clientThread.invoke(() ->
+		{
+			client.getItemSpriteCache().reset();
+		});
+	}
+
+	void setHash() {
+		clientThread.invoke(() ->
+		{
+			Player localPlayer = client.getLocalPlayer();
+			if (localPlayer == null) {
+				return;
+			}
+
+			PlayerComposition comp = localPlayer.getPlayerComposition();
+			if (comp == null) {
+				return;
+			}
 			// setHash does not reset animated model cache.
 			comp.setHash();
 		});
